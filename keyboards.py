@@ -1,6 +1,6 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-# Главное меню
+# --- Главное меню ---
 def main_menu():
     buttons = [
         [KeyboardButton(text="🌸 Подобрать образ")],
@@ -10,7 +10,7 @@ def main_menu():
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
-# Меню типа кожи
+# --- Меню типа кожи ---
 def skin_type_menu():
     buttons = [
         [KeyboardButton(text="Светлая кожа")],
@@ -20,7 +20,7 @@ def skin_type_menu():
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
-# Меню бюджета
+# --- Меню бюджета ---
 def budget_menu():
     buttons = [
         [KeyboardButton(text="До 3000 ₽")],
@@ -30,7 +30,7 @@ def budget_menu():
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
-# Меню Bloom (цветотип, форма лица, подбор стиля)
+# --- Меню Bloom (цветотип, форма лица, стиль) ---
 def bloom_menu():
     buttons = [
         [KeyboardButton(text="🌸 Цветотип")],
@@ -40,7 +40,7 @@ def bloom_menu():
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
-# Меню поиска товаров
+# --- Меню поиска товаров ---
 def product_search_menu():
     buttons = [
         [KeyboardButton(text="👕 Футболки")],
@@ -52,7 +52,7 @@ def product_search_menu():
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
-# Меню путешествий
+# --- Меню путешествий ---
 def travel_menu():
     buttons = [
         [KeyboardButton(text="✈️ Лёгкий гардероб")],
@@ -63,7 +63,28 @@ def travel_menu():
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
-# Меню настроек
+# --- Меню стилей (деловой, кэжуал, вечерний, спортивный) ---
+def style_menu():
+    buttons = [
+        [KeyboardButton(text="👔 Деловой")],
+        [KeyboardButton(text="👖 Кэжуал")],
+        [KeyboardButton(text="🎉 Вечерний")],
+        [KeyboardButton(text="🏃 Спортивный")],
+        [KeyboardButton(text="🔙 Назад")]
+    ]
+    return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
+
+# --- Меню макияжа и причёсок ---
+def makeup_scene_menu():
+    buttons = [
+        [KeyboardButton(text="💄 Дневной макияж")],
+        [KeyboardButton(text="✨ Вечерний макияж")],
+        [KeyboardButton(text="💇 Причёски")],
+        [KeyboardButton(text="🔙 Назад")]
+    ]
+    return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
+
+# --- Меню настроек ---
 def settings_menu():
     buttons = [
         [KeyboardButton(text="👤 Мой профиль")],
@@ -73,7 +94,7 @@ def settings_menu():
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
-# Меню помощи
+# --- Меню помощи ---
 def help_menu():
     buttons = [
         [KeyboardButton(text="📖 О боте")],
