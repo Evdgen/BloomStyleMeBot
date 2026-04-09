@@ -19,7 +19,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
     raise ValueError("BOT_TOKEN не найден в переменных окружения!")
 
-# Бот и диспетчер (НОВЫЙ синтаксис для aiogram 3.7+)
+# Бот и диспетчер (новый синтаксис aiogram 3.7+)
 bot = Bot(
     token=BOT_TOKEN,
     default=DefaultBotProperties(parse_mode=ParseMode.HTML)
@@ -27,36 +27,60 @@ bot = Bot(
 storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 
-# --- Импорты хендлеров ---
+# --- Импорты из папки handlers ---
 from handlers.start import router as start_router
-from handlers.survey import router as survey_router
 from handlers.style import router as style_router
 from handlers.premium_commands import router as premium_router
 from handlers.settings import router as settings_router
+from handlers.keyboards import router as keyboards_router
+from handlers.database import router as database_router
+from handlers.config import router as config_router
+from handlers.texts import router as texts_router
 
-# --- Импорты тестов ---
+# --- Дополнительные модули (если есть) ---
 try:
-    from colortype_test import router as colortype_router
+    from handlers.colortype_test import router as colortype_router
     dp.include_router(colortype_router)
 except ImportError:
     pass
 
 try:
-    from face_shape_test import router as faceshape_router
+    from handlers.face_shape_test import router as faceshape_router
     dp.include_router(faceshape_router)
 except ImportError:
     pass
 
-# --- Регистрируем роутеры ---
+try:
+    from handlers.weather_api import router as weather_router
+    dp.include_router(weather_router)
+except ImportError:
+    pass
+
+try:
+    from handlers.style_engine import router as style_engine_router
+    dp.include_router(style_engine_router)
+except ImportError:
+    pass
+
+try:
+    from handlers.product_engine import router as product_router
+    dp.include_router(product_router)
+except ImportError:
+    pass
+
+# --- Регистрируем основные роутеры ---
 dp.include_router(start_router)
-dp.include_router(survey_router)
 dp.include_router(style_router)
 dp.include_router(premium_router)
 dp.include_router(settings_router)
+dp.include_router(keyboards_router)
+dp.include_router(database_router)
+dp.include_router(config_router)
+dp.include_router(texts_router)
 
 # --- Запуск ---
 async def main():
-    print("🚀 Бот BloomStyle запускается...")
+    print("🚀 Бот BloomStyleMe запускается...")
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
 
