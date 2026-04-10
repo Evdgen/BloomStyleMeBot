@@ -32,20 +32,15 @@ async def help_command(message: Message):
 @router.message(F.text == "🌸 Подобрать образ")
 async def choose_style(message: Message):
     await message.answer(
-        "🎨 *Давай подберем твой идеальный образ!*\n\n"
-        "Сначала выбери тип кожи:",
-        reply_markup=skin_type_menu(),
-        parse_mode="Markdown"
+        "Давай подберем твой идеальный образ!\n\nСначала выбери тип кожи:",
+        reply_markup=skin_type_menu()
     )
 
 # --- Кнопка "Мои сохранения" ---
 @router.message(F.text == "👗 Мои сохранения")
 async def my_saves(message: Message):
     await message.answer(
-        "📦 *Мои сохранения*\n\n"
-        "Здесь будут храниться твои любимые образы.\n"
-        "Пока что тут пусто — сохрани первый образ!",
-        parse_mode="Markdown",
+        "Мои сохранения\n\nЗдесь будут храниться твои любимые образы.\nПока что тут пусто — сохрани первый образ!",
         reply_markup=main_menu()
     )
 
@@ -53,10 +48,7 @@ async def my_saves(message: Message):
 @router.message(F.text == "📞 Связаться со стилистом")
 async def contact_stylist(message: Message):
     await message.answer(
-        "📞 *Связь со стилистом*\n\n"
-        "Напиши нам: @evd_gen\n"
-        "Или отправь сообщение прямо сюда — я передам!",
-        parse_mode="Markdown",
+        "Связь со стилистом\n\nНапиши нам: @evd_gen\nИли отправь сообщение прямо сюда — я передам!",
         reply_markup=main_menu()
     )
 
@@ -66,8 +58,7 @@ async def light_skin(message: Message):
     user_id = message.from_user.id
     set_user_skin_type(user_id, "светлая")
     await message.answer(
-        "✅ Сохранила: Светлая кожа\n\n"
-        "Теперь выбери свой бюджет:",
+        "Сохранила: Светлая кожа\n\nТеперь выбери свой бюджет:",
         reply_markup=budget_menu()
     )
 
@@ -76,8 +67,7 @@ async def dark_skin(message: Message):
     user_id = message.from_user.id
     set_user_skin_type(user_id, "смуглая")
     await message.answer(
-        "✅ Сохранила: Смуглая кожа\n\n"
-        "Теперь выбери свой бюджет:",
+        "Сохранила: Смуглая кожа\n\nТеперь выбери свой бюджет:",
         reply_markup=budget_menu()
     )
 
@@ -86,8 +76,7 @@ async def olive_skin(message: Message):
     user_id = message.from_user.id
     set_user_skin_type(user_id, "оливковая")
     await message.answer(
-        "✅ Сохранила: Оливковая кожа\n\n"
-        "Теперь выбери свой бюджет:",
+        "Сохранила: Оливковая кожа\n\nТеперь выбери свой бюджет:",
         reply_markup=budget_menu()
     )
 
@@ -97,9 +86,7 @@ async def budget_low(message: Message):
     user_id = message.from_user.id
     set_user_budget(user_id, "до 3000")
     await message.answer(
-        "✅ Сохранила бюджет: до 3000 ₽\n\n"
-        "🎉 Подбор стиля завершён!\n"
-        "Скоро я покажу тебе подходящие образы.",
+        "Сохранила бюджет: до 3000 ₽\n\nПодбор стиля завершён!\nСкоро я покажу тебе подходящие образы.",
         reply_markup=main_menu()
     )
 
@@ -108,9 +95,7 @@ async def budget_mid(message: Message):
     user_id = message.from_user.id
     set_user_budget(user_id, "3000-10000")
     await message.answer(
-        "✅ Сохранила бюджет: 3000-10000 ₽\n\n"
-        "🎉 Подбор стиля завершён!\n"
-        "Скоро я покажу тебе подходящие образы.",
+        "Сохранила бюджет: 3000-10000 ₽\n\nПодбор стиля завершён!\nСкоро я покажу тебе подходящие образы.",
         reply_markup=main_menu()
     )
 
@@ -119,9 +104,7 @@ async def budget_high(message: Message):
     user_id = message.from_user.id
     set_user_budget(user_id, "от 10000")
     await message.answer(
-        "✅ Сохранила бюджет: от 10000 ₽\n\n"
-        "🎉 Подбор стиля завершён!\n"
-        "Скоро я покажу тебе подходящие образы.",
+        "Сохранила бюджет: от 10000 ₽\n\nПодбор стиля завершён!\nСкоро я покажу тебе подходящие образы.",
         reply_markup=main_menu()
     )
 
@@ -139,7 +122,6 @@ async def back_to_main(message: Message):
 @router.message()
 async def unknown_message(message: Message):
     await message.answer(
-        "❓ Пожалуйста, используй кнопки меню для навигации.\n\n"
-        "Если нужна помощь — нажми '❓ Помощь'",
+        "Пожалуйста, используй кнопки меню для навигации.\n\nЕсли нужна помощь — нажми 'Помощь'",
         reply_markup=main_menu()
     )
