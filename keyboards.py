@@ -5,7 +5,7 @@ def main_menu():
     buttons = [
         [KeyboardButton(text="🌸 Подобрать образ")],
         [KeyboardButton(text="👗 Мои сохранения")],
-       KeyboardButton(text="📞 Связаться со стилистом"),
+        [KeyboardButton(text="📞 Связаться со стилистом")],
         [KeyboardButton(text="❓ Помощь")]
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
@@ -84,7 +84,7 @@ def makeup_scene_menu():
     ]
     return ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True)
 
-# --- Меню знаний (knowledge) ---
+# --- Меню знаний ---
 def knowledge_menu():
     buttons = [
         [KeyboardButton(text="📚 Цветотипы")],
